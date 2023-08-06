@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading;
@@ -37,10 +37,12 @@ namespace BaGet.Web
         [BindProperty(SupportsGet = true)]
         public bool Prerelease { get; set; } = true;
 
+
         public IReadOnlyList<SearchResult> Packages { get; private set; }
 
         public async Task<IActionResult> OnGetAsync(CancellationToken cancellationToken)
         {
+
             if (!ModelState.IsValid) return BadRequest();
 
             var packageType = PackageType == "any" ? null : PackageType;
